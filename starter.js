@@ -154,3 +154,30 @@ console.log(dogProducts)
 ////////////////////////
 
 // CODE HERE
+// we want to write a function that returns a function
+
+// const makeRyeSandwich = function(ingredients) { would begin a function expression
+function makeSandwich(bread) {
+  return function(ingredients) {
+    let order = `You ordered a ${bread} bread sandwich with `
+    for(let i = 0; i < ingredients.length; i++){
+      if(i === ingredients.length - 1 && i !== 0){
+        order += `and ${ingredients[i]}.`
+      } else if (ingredients.length === 1){
+        order += `${ingredients[i]}.`
+      } else if(i === ingredients.length -2){
+        order += `${ingredients[i]} `
+      } else {
+        order += `${ingredients[i]},`
+      }
+    }
+    return order
+  }
+}
+
+const makeRyeSandwich = makeSandwich('rye')
+// after the above implementation makeRyeSandwich becomes a function expression due to makeSandwich returning a function. Looks something like rest of lines within the function.
+// console.log(makeRyeSandwich)
+// since makeRyeSandwich has no arguments, it will only return that it is a function, which is an anonymous function because the key word earlier says 'function' with no name
+// ingredients is expecting an array, which is a prerequisite that we decided
+console.log(makeRyeSandwich(['pickles', 'cheese', 'turkey', 'mayo']))
